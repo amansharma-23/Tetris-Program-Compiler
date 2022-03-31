@@ -36,9 +36,12 @@ class CalcLexer(Lexer):
     ASSIGNOP  = r'='
     DELIMITER = r'\n'
 
+    def error(self, t):
+        print('Line %d: Bad character %r' % (self.lineno, t.value[0]))
+        self.index += 1
     
 if __name__ == '__main__':
-    data = 'TRUE'
+    data = '@'
     lexer = CalcLexer()
     for tok in lexer.tokenize(data):
         print('type=%r, value=%r' % (tok.type, tok.value))
