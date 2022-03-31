@@ -41,7 +41,9 @@ class CalcLexer(Lexer):
         self.index += 1
     
 if __name__ == '__main__':
-    data = '@'
+    program = open('program.txt','r')
+    data = program.read()
+    program.close()
     lexer = CalcLexer()
     for tok in lexer.tokenize(data):
         print('type=%r, value=%r' % (tok.type, tok.value))
