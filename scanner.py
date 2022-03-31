@@ -36,6 +36,10 @@ class CalcLexer(Lexer):
     ASSIGNOP  = r'='
     DELIMITER = r'\n'
 
+    @_(r'//.*')
+    def COMMENT(self, t):
+        pass
+
     def error(self, t):
         print('Line %d: Bad character %r' % (self.lineno, t.value[0]))
         self.index += 1
