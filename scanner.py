@@ -32,6 +32,7 @@ class CalcLexer(Lexer):
     ID['HARDDROP'] = 'MOVE'
     ID['ROTATERIGHT'] = 'MOVE'
     ID['ROTATELEFT'] = 'MOVE'
+    ID['PAUSE'] = 'MOVE'
     NUMBER  = r'\d+'
     ASSIGNOP  = r'='
     DELIMITER = r'\n'
