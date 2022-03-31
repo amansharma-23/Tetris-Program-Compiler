@@ -1,6 +1,6 @@
 from sly import Lexer
 
-class CalcLexer(Lexer):
+class TetrisLexer(Lexer):
     # Set of token names.   This is always required
     tokens = { KEYWORD, NUMBER, MOVE, ASSIGNOP,BOOLEAN, DELIMITER, ID}
 
@@ -46,9 +46,9 @@ class CalcLexer(Lexer):
         self.index += 1
     
 if __name__ == '__main__':
-    program = open('program.txt','r')
+    program = open('program.rpj','r')
     data = program.read()
     program.close()
-    lexer = CalcLexer()
+    lexer = TetrisLexer()
     for tok in lexer.tokenize(data):
         print('type=%r, value=%r' % (tok.type, tok.value))
