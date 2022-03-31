@@ -2,19 +2,41 @@ from sly import Lexer
 
 class CalcLexer(Lexer):
     # Set of token names.   This is always required
-    tokens = { KEYWORD, NUMBER, MOVE, ASSIGNOP,BOOLEAN, DELIMITER}
+    tokens = { KEYWORD, NUMBER, MOVE, ASSIGNOP,BOOLEAN, DELIMITER, ID}
 
     # String containing ignored characters between tokens
     ignore = ' \t'
 
     # Regular expression rules for tokens
-    KEYWORD = r'[CONFIG][ROWS][COLUMNS][MUSIC][SPEED][NEXTQ][BLOCKTYPE1][BLOCKTYPE2][BLOCKTYPE3][BLOCKTYPE4][BLOCKTYPE5][BLOCKTYPE6][BLOCKTYPE7][TIMER][TIMEDGAME]'
+    ID = r'[a-zA-Z_][a-zA-Z0-9_]*'
+    ID['TRUE'] = 'BOOLEAN'
+    ID['FALSE'] = 'BOOLEAN'
+    ID['CONFIG'] = 'KEYWORD'
+    ID['ROWS'] = 'KEYWORD'
+    ID['COLUMNS'] = 'KEYWORD'
+    ID['MUSIC'] = 'KEYWORD'
+    ID['SPEED'] = 'KEYWORD'
+    ID['NEXTQ'] = 'KEYWORD'
+    ID['BLOCKTYPE1'] = 'KEYWORD'
+    ID['BLOCKTYPE2'] = 'KEYWORD'
+    ID['BLOCKTYPE3'] = 'KEYWORD'
+    ID['BLOCKTYPE4'] = 'KEYWORD'
+    ID['BLOCKTYPE5'] = 'KEYWORD'
+    ID['BLOCKTYPE6'] = 'KEYWORD'
+    ID['BLOCKTYPE7'] = 'KEYWORD'
+    ID['TIMER'] = 'KEYWORD'
+    ID['TIMEDGAME'] = 'KEYWORD'
+    ID['RIGHT'] = 'MOVE'
+    ID['LEFT'] = 'MOVE'
+    ID['SOFTDROP'] = 'MOVE'
+    ID['HARDDROP'] = 'MOVE'
+    ID['ROTATERIGHT'] = 'MOVE'
+    ID['ROTATELEFT'] = 'MOVE'
     NUMBER  = r'\d+'
     ASSIGNOP  = r'='
-    BOOLEAN = r'[TRUE] | [FALSE]'
-    MOVE = r'[RIGHT][LEFT][SOFTDROP][HARDDROP][ROTATERIGHT][ROTATELEFT]'
     DELIMITER = r'\n'
 
+    
 if __name__ == '__main__':
     data = 'TRUE'
     lexer = CalcLexer()
