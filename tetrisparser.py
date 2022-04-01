@@ -1,5 +1,6 @@
 from sly import Parser
 
+
 class TetrisParser(Parser):
 
     @_('NUMBER')
