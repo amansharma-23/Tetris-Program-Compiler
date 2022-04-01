@@ -1,8 +1,10 @@
 from sly import Parser
-
+from tetrisscanner import TetrisLexer
 
 class TetrisParser(Parser):
+    
+    tokens = TetrisLexer.tokens
 
-    @_('NUMBER')
-    def expr(self, p):
-    return Number(p.NUMBER)
+    @_('KEYWORD ASSIGNOP NUMBER')
+    def statement(self, p):
+        self.names[p.KEYWORD] = p.NUMBER
