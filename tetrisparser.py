@@ -9,6 +9,21 @@ class TetrisParser(Parser):
         self.names = { }
 
     @_('KEYWORD ASSIGNOP NUMBER')
-    def statement(self, p):
-        self.names[p.KEYWORD] = p.NUMBER
+    def statement(self,p):
+        self.names[p.KEYWORD]=p.NUMBER
+
+    @_('KEYWORD ASSIGNOP BOOLEAN')
+    def statement(self,p):
+        self.names[p.KEYWORD]=p.BOOLEAN
+
+    @_('CONFIG MOVE ID')
+    def statement(self,p):
+        self.names[p.MOVE]=p.ID
+
+    
+
+    @_('NUMBER')
+    def expr(self, p):
+        print('number is ' + p.NUMBER)
+        self.names[p.NUMBER] = p.NUMBER
         print(self.names)

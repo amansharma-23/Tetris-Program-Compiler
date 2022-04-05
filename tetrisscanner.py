@@ -2,16 +2,18 @@ from sly import Lexer
 
 class TetrisLexer(Lexer):
     # Set of token names.   This is always required
-    tokens = { KEYWORD, NUMBER, MOVE, ASSIGNOP,BOOLEAN, DELIMITER, ID}
+    tokens = { KEYWORD, NUMBER, MOVE, ASSIGNOP,BOOLEAN,DELIMITER, ID, CONFIG}
+    
 
     # String containing ignored characters between tokens
     ignore = ' \t'
 
     # Regular expression rules for tokens
+    # KEYWORD = r'IF|ELSE'
     ID = r'[a-zA-Z_][a-zA-Z0-9_]*'
     ID['TRUE'] = 'BOOLEAN'
     ID['FALSE'] = 'BOOLEAN'
-    ID['CONFIG'] = 'KEYWORD'
+    ID['CONFIG'] = 'CONFIG'
     ID['ROWS'] = 'KEYWORD'
     ID['COLUMNS'] = 'KEYWORD'
     ID['MUSIC'] = 'KEYWORD'
@@ -46,7 +48,7 @@ class TetrisLexer(Lexer):
         self.index += 1
     
 if __name__ == '__main__':
-    program = open('program.rpj','r')
+    program = open('test.rpj','r')
     data = program.read()
     program.close()
     lexer = TetrisLexer()
