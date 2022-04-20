@@ -8,19 +8,21 @@ class TetrisParser(Parser):
     def __init__(self):
         self.names = { }
 
-    @_('KEYWORD ASSIGNOP NUMBER')
+    @_('KEYWORD ASSIGNOP NUMBER DELIMITER')
     def statement(self,p):
         self.names[p.KEYWORD]=p.NUMBER
 
-    @_('KEYWORD ASSIGNOP BOOLEAN')
+    @_('KEYWORD ASSIGNOP BOOLEAN DELIMITER')
     def statement(self,p):
         self.names[p.KEYWORD]=p.BOOLEAN
 
-    @_('CONFIG MOVE ID')
+    @_('CONFIG MOVE ID DELIMITER')
     def statement(self,p):
         self.names[p.MOVE]=p.ID
 
-    
+    @_('DELIMITER')
+    def statement(self,p):
+        pass
 
     @_('NUMBER')
     def expr(self, p):

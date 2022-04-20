@@ -5,7 +5,7 @@ from tetrisparser import TetrisParser
 def main():
     lexer = TetrisLexer()
     parser = TetrisParser()
-    program = open('test.rpj','r')
+    program = open('program.rpj','r')
     text = program.readlines()
     # print(len(text))
     for string in text:
