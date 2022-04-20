@@ -1,6 +1,5 @@
 from sly import Parser
 from tetrisscanner import TetrisLexer
-from tetris import tetrisgame
 
 class TetrisParser(Parser):
     
@@ -8,12 +7,10 @@ class TetrisParser(Parser):
 
     def __init__(self):
         self.names = { }
-        # self.game = tetrisgame()
 
     @_('KEYWORD ASSIGNOP NUMBER DELIMITER')
     def statement(self,p):
         self.names[p.KEYWORD]=p.NUMBER
-        # self.game.a=p.NUMBER
 
     @_('KEYWORD ASSIGNOP BOOLEAN DELIMITER')
     def statement(self,p):

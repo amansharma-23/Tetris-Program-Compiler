@@ -1,4 +1,4 @@
-
+from tetris import tetrisgame
 from tetrisscanner import TetrisLexer
 from tetrisparser import TetrisParser
 
@@ -14,11 +14,15 @@ def main():
         #     print(tok)
             # print('type=%r, value=%r' % (tok.type, tok.value))
         # print(tokens)
-        parser.parse(tokens) 
+        parsed = parser.parse(tokens)
     print(parser.names)   
     
     # parser.parse(tokens) # The entry point to the parser
     # print(parser.last_item_on_stack)
+
+    # newgame = tetrisgame()
+    # newgame.COLUMNS=69
+    # print(newgame.COLUMNS)
 
 if __name__ == '__main__':
     main()
