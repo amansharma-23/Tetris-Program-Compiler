@@ -6,3 +6,6 @@ class tetrisgame:
     NEXTQ = 1
     def __init__(self):  
         pass 
+
+    check 124
+    check 124
