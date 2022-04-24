@@ -22,6 +22,13 @@ colors = [
     (180, 34, 122),
 ]
 
+RIGHT = pygame.K_RIGHT
+LEFT = pygame.K_LEFT
+ROTATELEFT = pygame.K_UP
+ROTATERIGHT = pygame.K_RSHIFT
+SOFTDROP = pygame.K_DOWN 
+HARDDROP = pygame.K_SPACE
+PAUSE = pygame.K_p
 
 class Figure:
     x = 0
@@ -39,6 +46,7 @@ class Figure:
 
     def __init__(self, x, y):
         self.x = x
+        # print(x)
         self.y = y
         # self.type = random.randint(0, len(self.figures) - 1)
         self.type = random.choice(blockindices)
@@ -77,8 +85,8 @@ class Tetris:
                 new_line.append(0)
             self.field.append(new_line)
 
-    def new_figure(self):
-        self.figure = Figure(ORIGIN, 0)
+    def new_figure(self,origin):
+        self.figure = Figure(origin, 0)
 
     def intersects(self):
         intersection = False
@@ -106,25 +114,25 @@ class Tetris:
                         self.field[i1][j] = self.field[i1 - 1][j]
         self.score += lines ** 2
 
-    def go_space(self):
+    def go_space(self,origin):
         while not self.intersects():
             self.figure.y += 1
         self.figure.y -= 1
-        self.freeze()
+        self.freeze(origin)
 
-    def go_down(self):
+    def go_down(self,origin):
         self.figure.y += 1
         if self.intersects():
             self.figure.y -= 1
-            self.freeze()
+            self.freeze(origin)
 
-    def freeze(self):
+    def freeze(self,origin):
         for i in range(4):
             for j in range(4):
                 if i * 4 + j in self.figure.image():
                     self.field[i + self.figure.y][j + self.figure.x] = self.figure.color
         self.break_lines()
-        self.new_figure()
+        self.new_figure(origin)
         if self.intersects():
             self.state = "gameover"
 
@@ -183,6 +191,8 @@ def main():
     else:
         print("default value assigned for ORIGIN")
 
+    # print(ORIGIN)
+
     if "MUSIC" in parser.names:
         MUSIC=parser.names["MUSIC"]
         if(MUSIC<0 or MUSIC>2):
@@ -208,6 +218,8 @@ def main():
     if(len(blockindices)==0):
         print("Error: Atleast one block type has to be allowed")
         return
+
+
     # Initialize the game engine
     pygame.init()
 
@@ -242,31 +254,33 @@ def main():
 
     pressing_down = False
 
+    
+
     while not done:
         if game.figure is None:
-            game.new_figure()
+            game.new_figure(ORIGIN)
         counter += 1
         if counter > 100000:
             counter = 0
 
         if counter % (fps // game.level // 2) == 0 or pressing_down:
             if game.state == "start":
-                game.go_down()
+                game.go_down(ORIGIN)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 done = True
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_UP:
+                if event.key == ROTATELEFT:
                     game.rotate()
-                if event.key == pygame.K_DOWN:
+                if event.key == SOFTDROP:
                     pressing_down = True
-                if event.key == pygame.K_LEFT:
+                if event.key == LEFT:
                     game.go_side(-1)
-                if event.key == pygame.K_RIGHT:
+                if event.key == RIGHT:
                     game.go_side(1)
-                if event.key == pygame.K_SPACE:
-                    game.go_space()
+                if event.key == HARDDROP:
+                    game.go_space(ORIGIN)
                 if event.key == pygame.K_ESCAPE:
                     game.__init__(ROWS, COLUMNS, SPEED)
 
@@ -308,7 +322,7 @@ def main():
         clock.tick(fps)
 
     pygame.quit()
-   
+
 
 if __name__ == '__main__':
     main()
