@@ -9,7 +9,7 @@ ROWS = 10
 COLUMNS = 30
 ORIGIN = 0
 MUSIC = 1
-SPEED = 1
+SPEED = 10
 NEXTQ = 1
 
 colors = [
@@ -64,9 +64,10 @@ class Tetris:
     zoom = 20
     figure = None
 
-    def __init__(self, height, width):
+    def __init__(self, height, width,speed):
         self.height = height
         self.width = width
+        self.level = speed
         self.field = []
         self.score = 0
         self.state = "start"
@@ -190,6 +191,16 @@ def main():
         print("MUSIC updated")
     else:
         print("default value assigned for MUSIC")
+
+    if "SPEED" in parser.names:
+        SPEED=parser.names["SPEED"]
+        if(SPEED<0 or SPEED>10):
+            print("Error: SPEED cannot be less than 0 or greater than 10.")
+            return
+        print("SPEED updated")
+        # print(SPEED)
+    else:
+        print("default value assigned for SPEED")
     
     for i in range(7):
         if(parser.blocktable[i]==True):
@@ -213,7 +224,9 @@ def main():
     WHITE = (255, 255, 255)
     GRAY = (128, 128, 128)
     
-    game = Tetris(ROWS, COLUMNS)
+    game = Tetris(ROWS, COLUMNS, SPEED)
+
+    # print(game.level)
 
     size = (max(2*game.x+COLUMNS+1+COLUMNS*game.zoom,500), max(2*game.y +ROWS+1+ ROWS*game.zoom,500))
     screen = pygame.display.set_mode(size)
@@ -255,7 +268,7 @@ def main():
                 if event.key == pygame.K_SPACE:
                     game.go_space()
                 if event.key == pygame.K_ESCAPE:
-                    game.__init__(ROWS, COLUMNS)
+                    game.__init__(ROWS, COLUMNS, SPEED)
 
         if event.type == pygame.KEYUP:
                 if event.key == pygame.K_DOWN:
