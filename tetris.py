@@ -270,7 +270,7 @@ def main():
                 if event.key == pygame.K_ESCAPE:
                     game.__init__(ROWS, COLUMNS, SPEED)
 
-        if event.type == pygame.KEYUP:
+            if event.type == pygame.KEYUP:
                 if event.key == pygame.K_DOWN:
                     pressing_down = False
 
