@@ -3,7 +3,7 @@ from tetrisparser import TetrisParser
 import pygame
 import random
 
-blocktype = [True,True,True,True,True,True,True]
+blockindices = []
 
 ROWS = 10
 COLUMNS = 30
@@ -151,7 +151,8 @@ def main():
             # print('type=%r, value=%r' % (tok.type, tok.value))
         # print(tokens)
         parser.parse(tokens)
-    print(parser.names)
+    # print(parser.names)
+    # print(parser.blocktable)
 
     if "ROWS" in parser.names:
         ROWS=parser.names["ROWS"]
@@ -179,7 +180,13 @@ def main():
         print("ORIGIN updated")
     else:
         print("default value assigned for ORIGIN")
-
+    
+    for i in range(7):
+        if(parser.blocktable[i]==True):
+            blockindices.append(i)
+    if(len(blockindices)==0):
+        print("Error: Atleast one block type has to be allowed")
+        return
     # Initialize the game engine
     pygame.init()
 
