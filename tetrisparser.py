@@ -24,8 +24,8 @@ class TetrisParser(Parser):
     def statement(self,p):
         pass
 
-    @_('NUMBER')
-    def expr(self, p):
-        print('number is ' + p.NUMBER)
-        self.names[p.NUMBER] = p.NUMBER
-        print(self.names)
+    # @_('NUMBER')
+    # def expr(self, p):
+    #     print('number is ' + p.NUMBER)
+    #     self.names[p.NUMBER] = p.NUMBER
+    #     print(self.names)
