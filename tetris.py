@@ -40,7 +40,8 @@ class Figure:
     def __init__(self, x, y):
         self.x = x
         self.y = y
-        self.type = random.randint(0, len(self.figures) - 1)
+        # self.type = random.randint(0, len(self.figures) - 1)
+        self.type = random.choice(blockindices)
         self.color = random.randint(1, len(colors) - 1)
         self.rotation = 0
 
