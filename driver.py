@@ -1,4 +1,4 @@
-from tetris import tetrisgame
+# from tetris import tetrisgame
 from tetrisscanner import TetrisLexer
 from tetrisparser import TetrisParser
 
@@ -14,7 +14,7 @@ def main():
         #     print(tok)
             # print('type=%r, value=%r' % (tok.type, tok.value))
         # print(tokens)
-        parsed = parser.parse(tokens)
+        parser.parse(tokens)
     print(parser.names)   
     
     # parser.parse(tokens) # The entry point to the parser
