@@ -46,6 +46,8 @@ class TetrisParser(Parser):
     def statement(self,p):
         pass
         
+    def error(self, p):
+        print("Error encountered during parsing")
 
     # @_('NUMBER')
     # def expr(self, p):

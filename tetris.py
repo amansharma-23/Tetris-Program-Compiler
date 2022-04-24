@@ -160,7 +160,7 @@ def main():
         #     print(tok)
             # print('type=%r, value=%r' % (tok.type, tok.value))
         # print(tokens)
-        parser.parse(tokens)
+        print(parser.parse(tokens))
     # print(parser.names)
     # print(parser.blocktable)
 
