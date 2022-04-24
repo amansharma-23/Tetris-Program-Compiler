@@ -214,7 +214,7 @@ def main():
                 if event.key == pygame.K_SPACE:
                     game.go_space()
                 if event.key == pygame.K_ESCAPE:
-                    game.__init__(20, 10)
+                    game.__init__(ROWS, COLUMNS)
 
         if event.type == pygame.KEYUP:
                 if event.key == pygame.K_DOWN:
