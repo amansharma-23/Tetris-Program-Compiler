@@ -7,6 +7,7 @@ blocktype = [True,True,True,True,True,True,True]
 
 ROWS = 10
 COLUMNS = 30
+ORIGIN = 0
 MUSIC = 1
 SPEED = 1
 NEXTQ = 1
@@ -75,7 +76,7 @@ class Tetris:
             self.field.append(new_line)
 
     def new_figure(self):
-        self.figure = Figure(3, 0)
+        self.figure = Figure(ORIGIN, 0)
 
     def intersects(self):
         intersection = False
@@ -154,15 +155,30 @@ def main():
 
     if "ROWS" in parser.names:
         ROWS=parser.names["ROWS"]
+        if(ROWS<4):
+            print("Error: ROWS cannot be less than 4.")
+            return
         print("ROWS updated")
     else:
         print("default value assigned for ROWS")
 
     if "COLUMNS" in parser.names:
         COLUMNS=parser.names["COLUMNS"]
+        if(COLUMNS<4):
+            print("Error: COLUMNS cannot be less than 4.")
+            return
         print("COLUMNS updated")
     else:
         print("default value assigned for COLUMNS")
+
+    if "ORIGIN" in parser.names:
+        ORIGIN=parser.names["ORIGIN"]
+        if(ORIGIN<0 or ORIGIN+3>=COLUMNS):
+            print("Error: ORIGIN cannot be less than 0 or greater than COLUMNS-4.")
+            return
+        print("ORIGIN updated")
+    else:
+        print("default value assigned for ORIGIN")
 
     # Initialize the game engine
     pygame.init()

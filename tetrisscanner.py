@@ -16,6 +16,7 @@ class TetrisLexer(Lexer):
     ID['CONFIG'] = 'CONFIG'
     ID['ROWS'] = 'KEYWORD'
     ID['COLUMNS'] = 'KEYWORD'
+    ID['ORIGIN'] = 'KEYWORD'
     ID['MUSIC'] = 'KEYWORD'
     ID['SPEED'] = 'KEYWORD'
     ID['NEXTQ'] = 'KEYWORD'
