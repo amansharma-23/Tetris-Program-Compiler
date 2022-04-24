@@ -181,6 +181,15 @@ def main():
         print("ORIGIN updated")
     else:
         print("default value assigned for ORIGIN")
+
+    if "MUSIC" in parser.names:
+        MUSIC=parser.names["MUSIC"]
+        if(MUSIC<0 or MUSIC>2):
+            print("Error: MUSIC cannot be less than 0 or greater than 2.")
+            return
+        print("MUSIC updated")
+    else:
+        print("default value assigned for MUSIC")
     
     for i in range(7):
         if(parser.blocktable[i]==True):
@@ -190,6 +199,14 @@ def main():
         return
     # Initialize the game engine
     pygame.init()
+
+    #playing music
+    if MUSIC == 1:
+        pygame.mixer.music.load("TetrisOriginal.mp3")
+        pygame.mixer.music.play(-1)
+    if MUSIC == 2:
+        pygame.mixer.music.load("RickRoll.mp3")
+        pygame.mixer.music.play(-1)
 
     # Define some colors
     BLACK = (0, 0, 0)
