@@ -10,7 +10,7 @@ class TetrisParser(Parser):
 
     @_('KEYWORD ASSIGNOP NUMBER DELIMITER')
     def statement(self,p):
-        self.names[p.KEYWORD]=p.NUMBER
+        self.names[p.KEYWORD]=int(p.NUMBER)
 
     @_('KEYWORD ASSIGNOP BOOLEAN DELIMITER')
     def statement(self,p):

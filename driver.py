@@ -152,6 +152,18 @@ def main():
         parser.parse(tokens)
     print(parser.names)
 
+    if "ROWS" in parser.names:
+        ROWS=parser.names["ROWS"]
+        print("ROWS updated")
+    else:
+        print("default value assigned for ROWS")
+
+    if "COLUMNS" in parser.names:
+        COLUMNS=parser.names["COLUMNS"]
+        print("COLUMNS updated")
+    else:
+        print("default value assigned for COLUMNS")
+
     # Initialize the game engine
     pygame.init()
 
