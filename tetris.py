@@ -160,7 +160,7 @@ def main():
         #     print(tok)
             # print('type=%r, value=%r' % (tok.type, tok.value))
         # print(tokens)
-        print(parser.parse(tokens))
+        parser.parse(tokens)
     # print(parser.names)
     # print(parser.blocktable)
 
@@ -219,6 +219,47 @@ def main():
         print("Error: Atleast one block type has to be allowed")
         return
 
+    if "RIGHT" in parser.names:
+        RIGHT=parser.names["RIGHT"]
+        print("RIGHT updated")
+    else:
+        print("default value assigned for RIGHT")
+    
+    if "LEFT" in parser.names:
+        LEFT=parser.names["LEFT"]
+        print("LEFT updated")
+    else:
+        print("default value assigned for LEFT")
+    
+    if "ROTATELEFT" in parser.names:
+        ROTATELEFT=parser.names["ROTATELEFT"]
+        print("ROTATELEFT updated")
+    else:
+        print("default value assigned for ROTATELEFT")
+    
+    if "ROTATERIGHT" in parser.names:
+        ROTATERIGHT=parser.names["ROTATERIGHT"]
+        print("ROTATERIGHT updated")
+    else:
+        print("default value assigned for ROTATERIGHT")
+
+    if "SOFTDROP" in parser.names:
+        SOFTDROP=parser.names["SOFTDROP"]
+        print("SOFTDROP updated")
+    else:
+        print("default value assigned for SOFTDROP")
+    
+    if "HARDDROP" in parser.names:
+        HARDDROP=parser.names["HARDDROP"]
+        print("HARDDROP updated")
+    else:
+        print("default value assigned for HARDDROP")
+    
+    if "PAUSE" in parser.names:
+        PAUSE=parser.names["PAUSE"]
+        print("PAUSE updated")
+    else:
+        print("default value assigned for PAUSE")
 
     # Initialize the game engine
     pygame.init()
@@ -285,7 +326,7 @@ def main():
                     game.__init__(ROWS, COLUMNS, SPEED)
 
             if event.type == pygame.KEYUP:
-                if event.key == pygame.K_DOWN:
+                if event.key == SOFTDROP:
                     pressing_down = False
 
         screen.fill(WHITE)
