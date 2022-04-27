@@ -3,13 +3,11 @@ from sly import Lexer
 class TetrisLexer(Lexer):
     # Set of token names. 
     tokens = { KEYWORD, NUMBER, MOVE, ASSIGNOP,BOOLEAN,DELIMITER, ID, CONFIG, BLOCK, COLOR}
-    
 
     # String containing ignored characters between tokens
     ignore = ' \t'
 
     # Regular expression rules for tokens
-    # KEYWORD = r'IF|ELSE'
     ID = r'[a-zA-Z_][a-zA-Z0-9_]*'
     ID['TRUE'] = 'BOOLEAN'
     ID['FALSE'] = 'BOOLEAN'
@@ -64,3 +62,6 @@ if __name__ == '__main__':
     lexer = TetrisLexer()
     for tok in lexer.tokenize(data):
         print('type=%r, value=%r' % (tok.type, tok.value))
+
+
+# KEYWORD = r'IF|ELSE'
