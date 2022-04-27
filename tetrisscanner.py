@@ -1,7 +1,7 @@
 from sly import Lexer
 
 class TetrisLexer(Lexer):
-    # Set of token names.   This is always required
+    # Set of token names. 
     tokens = { KEYWORD, NUMBER, MOVE, ASSIGNOP,BOOLEAN,DELIMITER, ID, CONFIG, BLOCK, COLOR}
     
 

@@ -151,7 +151,7 @@ class Tetris:
 def main():
     lexer = TetrisLexer()
     parser = TetrisParser()
-    program = open('program.rpj','r')
+    program = open('program.tet','r')
     text = program.readlines()
     # print(len(text))
     for string in text:
