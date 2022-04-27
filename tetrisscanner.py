@@ -2,7 +2,7 @@ from sly import Lexer
 
 class TetrisLexer(Lexer):
     # Set of token names.   This is always required
-    tokens = { KEYWORD, NUMBER, MOVE, ASSIGNOP,BOOLEAN,DELIMITER, ID, CONFIG}
+    tokens = { KEYWORD, NUMBER, MOVE, ASSIGNOP,BOOLEAN,DELIMITER, ID, CONFIG, BLOCK, COLOR}
     
 
     # String containing ignored characters between tokens
@@ -20,13 +20,13 @@ class TetrisLexer(Lexer):
     ID['MUSIC'] = 'KEYWORD'
     ID['SPEED'] = 'KEYWORD'
     ID['NEXTQ'] = 'KEYWORD'
-    ID['BLOCKTYPE1'] = 'KEYWORD'
-    ID['BLOCKTYPE2'] = 'KEYWORD'
-    ID['BLOCKTYPE3'] = 'KEYWORD'
-    ID['BLOCKTYPE4'] = 'KEYWORD'
-    ID['BLOCKTYPE5'] = 'KEYWORD'
-    ID['BLOCKTYPE6'] = 'KEYWORD'
-    ID['BLOCKTYPE7'] = 'KEYWORD'
+    ID['BLOCK1'] = 'BLOCK'
+    ID['BLOCK2'] = 'BLOCK'
+    ID['BLOCK3'] = 'BLOCK'
+    ID['BLOCK4'] = 'BLOCK'
+    ID['BLOCK5'] = 'BLOCK'
+    ID['BLOCK6'] = 'BLOCK'
+    ID['BLOCK7'] = 'BLOCK'
     ID['TIMER'] = 'KEYWORD'
     ID['TIMEDGAME'] = 'KEYWORD'
     ID['RIGHT'] = 'MOVE'
@@ -36,6 +36,15 @@ class TetrisLexer(Lexer):
     ID['ROTATERIGHT'] = 'MOVE'
     ID['ROTATELEFT'] = 'MOVE'
     ID['PAUSE'] = 'MOVE'
+    ID['RED'] = 'COLOR'
+    ID['BLUE'] = 'COLOR'
+    ID['GREEN'] = 'COLOR'
+    ID['YELLOW'] = 'COLOR'
+    ID['ORANGE'] = 'COLOR'
+    ID['INDIGO'] = 'COLOR'
+    ID['VIOLET'] = 'COLOR'
+    ID['BLACK'] = 'COLOR'
+    ID['RANDOM'] = 'COLOR'
     NUMBER  = r'\d+'
     ASSIGNOP  = r'='
     DELIMITER = r'\n'
@@ -49,7 +58,7 @@ class TetrisLexer(Lexer):
         self.index += 1
     
 if __name__ == '__main__':
-    program = open('test.rpj','r')
+    program = open('program.rpj','r')
     data = program.read()
     program.close()
     lexer = TetrisLexer()

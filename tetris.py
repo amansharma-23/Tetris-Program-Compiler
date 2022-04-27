@@ -163,6 +163,8 @@ def main():
         parser.parse(tokens)
     # print(parser.names)
     # print(parser.blocktable)
+    # print(parser.colortable)
+    # return
 
     if "ROWS" in parser.names:
         ROWS=parser.names["ROWS"]
